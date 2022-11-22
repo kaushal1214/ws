@@ -1,1 +1,2 @@
-web: examples/echo
+web: examples/echo/echo $PORT
+

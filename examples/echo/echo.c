@@ -108,13 +108,14 @@ void onmessage(ws_cli_conn_t *client,
  * @note After invoking @ref ws_socket, this routine never returns,
  * unless if invoked from a different thread.
  */
-int main(void)
+int main(int argc, char **argv)
 {
 	struct ws_events evs;
 	evs.onopen    = &onopen;
 	evs.onclose   = &onclose;
 	evs.onmessage = &onmessage;
-	ws_socket(&evs, 8080, 0, 1000); /* Never returns. */
+	printf("listeing on:%d",atoi(argv[1]));
+	ws_socket(&evs, atoi(argv[1]), 0, 1000); /* Never returns. */
 
 	/*
 	 * If you want to execute code past ws_socket, invoke it like:
